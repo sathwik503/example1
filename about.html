@@ -1,0 +1,2060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About | IC-FCSEE 2027</title>
+<link rel="icon" type="image/png" href="images/favicon.png"> 
+<style>
+/* =============================================================
+   IC-FCSEE 2027 — shared stylesheet (v2)
+   Light, professional, editorial theme. NOT a dark theme:
+   pages sit on a cream/ivory background; black/navy/bronze/wine
+   are used only for text, accents, and a few deep panels.
+   ============================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root{
+  /* ---- core palette (light / editorial, not "dark theme") ---- */
+  --black:     #14171C;
+  --navy:      #1C2C4C;
+  --ink:       #10131C;
+  --cream:     #FFFFFF;
+  --ivory:     #F7F8FB;
+  --bronze:    #A9793D;
+  --bronze-lt: #E9D5AC;
+  --wine:      #5C2430;
+  --olive:     #4B5A3A;
+  --steel:     #2E4358;
+  --line:      #E2E5EA;
+  --text:      #1B2027;
+  --text-soft: #555B68;
+  --edit-bg:   #FFF3D2;
+  --edit-bd:   #C98A2B;
+
+  /* ---- four distinct fonts, each with a defined role ---- */
+  --f-display: 'Fraunces', Georgia, serif;
+  --f-nav:     'Space Grotesk', sans-serif;
+  --f-body:    'Inter', -apple-system, sans-serif;
+  --f-mono:    'IBM Plex Mono', monospace;
+
+  --maxw: 1200px;
+  --radius: 6px;
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0; font-family:var(--f-body); color:var(--text); background:var(--cream);
+  line-height:1.62; font-size:16.5px; -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+ul{ margin:0; padding:0; list-style:none; }
+
+.wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
+
+h1,h2,h3,h4{ font-family:var(--f-display); font-weight:600; line-height:1.14; margin:0 0 .45em; color:var(--black); }
+h1{ font-size:clamp(2.15rem, 3.8vw, 3.15rem); font-weight:500; }
+h2{ font-size:clamp(1.55rem, 2.3vw, 2.05rem); }
+h3{ font-size:1.15rem; }
+p{ margin:0 0 .95em; color:var(--text-soft); max-width:70ch; text-align:justify; text-justify:inter-word; }
+p.no-justify{ text-align:left; }
+
+.section{ padding:48px 0; }
+.section--tight{ padding:38px 0; }
+.section--ivory{ background:var(--ivory); }
+.section--panel{ background:linear-gradient(175deg, var(--cream), #EFE7D4); }
+.section--dark{
+  background:linear-gradient(120deg, var(--black) 0%, var(--navy) 62%, #24304A 100%);
+  color:#E7E5DD;
+}
+.section--dark h1, .section--dark h2, .section--dark h3{ color:#FBF8F0; }
+.section--dark p{ color:#C7CBD8; }
+
+.kicker{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--f-nav); font-size:.78rem; font-weight:600;
+  letter-spacing:.04em; text-transform:uppercase;
+  color:#F5F1E6; background:var(--ink);
+  padding:6px 13px; border-radius:100px; margin-bottom:14px;
+}
+.section--dark .kicker{ background:rgba(233,213,172,.16); color:var(--bronze-lt); }
+
+.edit{
+  background:var(--edit-bg); border:1px dashed var(--edit-bd);
+  border-radius:3px; padding:0 5px; color:#8A5A0F; font-weight:600;
+  font-family:var(--f-mono); font-size:.92em;
+}
+.edit-block{
+  background:var(--edit-bg); border:1px dashed var(--edit-bd);
+  border-radius:var(--radius); padding:12px 15px; color:#8A5A0F;
+  font-family:var(--f-body); text-align:left;
+}
+
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--f-nav); font-weight:600; font-size:.9rem; letter-spacing:.01em;
+  padding:12px 24px; border-radius:var(--radius); border:1px solid transparent;
+  cursor:pointer; transition:transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease;
+}
+.btn:hover{ transform:translateY(-2px); }
+.btn--primary{ background:var(--ink); color:#FBF3EC; box-shadow:0 6px 16px -8px rgba(92,36,48,.6); }
+.btn--primary:hover{ background:#48181F; }
+.btn--ghost{ background:transparent; border-color:var(--black); color:var(--black); }
+.btn--ghost:hover{ background:var(--black); color:var(--cream); }
+.section--dark .btn--ghost{ border-color:rgba(255,255,255,.5); color:#FBF8F0; }
+.section--dark .btn--ghost:hover{ background:#FBF8F0; color:var(--black); }
+
+.site-header{ position:sticky; top:0; z-index:60; background:rgba(245,240,228,.94); backdrop-filter:blur(8px); }
+.marquee-strip{ background:var(--black); color:var(--bronze-lt); overflow:hidden; white-space:nowrap; border-bottom:1px solid rgba(233,213,172,.25); }
+.marquee-track{
+  display:inline-flex; gap:48px; padding:8px 0;
+  font-family:var(--f-mono); font-size:.74rem; letter-spacing:.06em; text-transform:uppercase;
+  animation:marquee 26s linear infinite;
+}
+.marquee-track span{ display:inline-flex; align-items:center; gap:48px; }
+@keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+.nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); }
+.conference-brand{
+  display:flex;
+  align-items:center;
+  margin-left:20px;
+}
+
+.conference-logo{
+  width:180px;
+  height:auto;
+  max-height:70px;
+  object-fit:contain;
+}
+.brand{ display:flex; align-items:center; gap:11px; font-family:var(--f-display); font-weight:600; font-size:1.1rem; color:var(--black); }
+.brand .mark{
+  width:38px; height:38px; border-radius:50%; flex-shrink:0;
+  background:linear-gradient(140deg, var(--black), var(--navy));
+  color:var(--bronze-lt); display:flex; align-items:center; justify-content:center;
+  font-family:var(--f-display); font-size:.95rem; font-weight:600;
+}
+.brand small{ display:block; font-family:var(--f-nav); font-weight:500; font-size:.66rem; letter-spacing:.02em; color:var(--text-soft); text-transform:uppercase; }
+
+.nav-links{ display:flex; gap:26px; align-items:center; }
+.nav-links a{ font-family:var(--f-nav); font-size:.88rem; font-weight:600; color:var(--text-soft); padding:5px 0; border-bottom:2px solid transparent; }
+.nav-links a:hover, .nav-links a.active{ color:var(--black); border-color:var(--bronze); }
+.nav-cta{ display:flex; align-items:center; gap:16px; }
+
+.nav-toggle{ display:none; background:none; border:none; cursor:pointer; width:30px; height:22px; position:relative; }
+.nav-toggle span{ position:absolute; left:0; right:0; height:2px; background:var(--black); transition:transform .2s ease, opacity .2s ease; }
+.nav-toggle span:nth-child(1){ top:0; } .nav-toggle span:nth-child(2){ top:10px; } .nav-toggle span:nth-child(3){ bottom:0; }
+
+.hero{
+  padding:46px 0 54px; display:grid; grid-template-columns:1.15fr .85fr;
+  gap:46px; align-items:center; position:relative;
+  background:radial-gradient(1100px 420px at 85% -10%, rgba(169,121,61,.14), transparent 60%);
+}
+.rotating-word{ color:var(--wine); font-style:italic; display:inline-block; min-width:1px; }
+.hero-meta{ display:flex; gap:12px; flex-wrap:wrap; margin:22px 0 28px; }
+.meta-chip{
+  border:1px solid var(--line); background:var(--ivory); border-radius:var(--radius);
+  padding:9px 15px; font-size:.84rem; font-family:var(--f-mono); display:flex; align-items:center; gap:8px;
+}
+.hero-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+
+.hero-card{
+  background:linear-gradient(150deg, var(--black) 0%, var(--navy) 100%);
+  color:var(--ivory); border-radius:8px; padding:30px; position:relative; overflow:hidden;
+}
+.hero-card::before{
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 88% 8%, rgba(169,121,61,.4), transparent 45%),
+             radial-gradient(circle at 6% 92%, rgba(92,36,48,.45), transparent 50%);
+}
+.hero-card > *{ position:relative; }
+.hero-card .label{ font-family:var(--f-nav); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--bronze-lt); margin-bottom:5px; }
+.hero-card .big{ font-family:var(--f-display); font-size:1.9rem; font-weight:600; margin-bottom:2px; }
+.hero-card .divider{ height:1px; background:rgba(255,255,255,.16); margin:16px 0; }
+.hero-card ul li{ display:flex; justify-content:space-between; gap:10px; padding:7px 0; font-family:var(--f-mono); font-size:.8rem; color:#CFD3E0; border-bottom:1px solid rgba(255,255,255,.08); }
+.hero-card ul li span:last-child{ color:#FBF8F0; font-weight:600; text-align:right; }
+
+.stats-bar{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
+.stat-cell{ background:var(--ivory); padding:24px 18px; text-align:center; }
+.stat-num{ font-family:var(--f-mono); font-weight:600; font-size:2rem; color:var(--wine); display:block; }
+.stat-label{ font-family:var(--f-nav); font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; color:var(--text-soft); margin-top:4px; }
+
+.grid{ display:grid; gap:20px; }
+.grid-2{ grid-template-columns:repeat(2,1fr); }
+.grid-3{ grid-template-columns:repeat(3,1fr); }
+.grid-4{ grid-template-columns:repeat(4,1fr); }
+
+.card{ background:var(--ivory); border:1px solid var(--line); border-radius:var(--radius); padding:24px; transition:transform .2s ease, box-shadow .2s ease; }
+.card:hover{ transform:translateY(-3px); box-shadow:0 14px 26px -18px rgba(20,23,28,.35); }
+.card h3{ margin-bottom:5px; }
+.card .role{ font-size:.85rem; color:var(--wine); font-weight:600; margin-bottom:1px; }
+.card .org{ font-size:.85rem; color:var(--text-soft); }
+
+.track-card{ border-top:4px solid var(--bronze); display:flex; flex-direction:column; gap:14px; }
+.track-card.t2{ border-top-color:var(--steel); }
+.track-card.t3{ border-top-color:var(--olive); }
+.track-card.t4{ border-top-color:var(--wine); }
+.track-num{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:38px; height:38px; border-radius:50%; flex-shrink:0;
+  font-family:var(--f-mono); font-weight:600; font-size:.95rem;
+  background:var(--bronze-lt); color:var(--wine);
+}
+.track-card.t2 .track-num{ background:#DCE4EA; color:var(--steel); }
+.track-card.t3 .track-num{ background:#E2E7DA; color:var(--olive); }
+.track-card.t4 .track-num{ background:#EEDDE1; color:var(--wine); }
+.track-top{ display:flex; align-items:center; gap:12px; }
+.track-tag{
+  font-family:var(--f-nav); font-size:.66rem; font-weight:700; letter-spacing:.05em;
+  text-transform:uppercase; color:var(--text-soft);
+}
+.track-chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:2px; }
+.track-chip{
+  font-family:var(--f-mono); font-size:.74rem; color:var(--text);
+  background:var(--ivory); border:1px solid var(--line); border-radius:100px;
+  padding:5px 12px;
+}
+
+.person{ text-align:left; border-top:3px solid var(--bronze); padding-top:14px; }
+.person h3{ font-size:1.02rem; margin-bottom:3px; }
+
+.section-head{ max-width:660px; margin-bottom:32px; }
+.section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
+.section-head.center p{ text-align:center; margin-left:auto; margin-right:auto; }
+
+.timeline{ display:flex; flex-direction:column; }
+.tl-row{ display:grid; grid-template-columns:190px 1fr; gap:20px; padding:14px 0; border-bottom:1px solid var(--line); align-items:baseline; }
+.tl-row:last-child{ border-bottom:none; }
+.tl-date{ font-family:var(--f-mono); font-weight:600; font-size:.98rem; color:var(--wine); }
+.tl-label{ font-family:var(--f-body); font-size:.95rem; color:var(--text); }
+
+table{ width:100%; border-collapse:collapse; }
+table th, table td{ text-align:left; padding:12px 14px; border-bottom:1px solid var(--line); font-size:.92rem; }
+table th{ font-family:var(--f-nav); font-weight:600; color:var(--text-soft); font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; }
+table td{ font-family:var(--f-mono); font-size:.88rem; }
+
+.committee-group{ margin-bottom:42px; }
+.committee-group h3.group-title{
+  font-family:var(--f-nav); font-weight:700; font-size:.78rem; letter-spacing:.04em;
+  color:var(--wine); margin-bottom:18px; padding-bottom:9px; border-bottom:1px solid var(--line);
+  text-transform:uppercase;
+}
+
+.subdomain-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:16px; }
+.subdomain-card{ background:var(--ivory); border:1px solid var(--line); border-left:3px solid var(--bronze); border-radius:4px; padding:12px 14px; font-size:.88rem; }
+
+.form-field{ margin-bottom:16px; display:flex; flex-direction:column; gap:6px; }
+.form-field label{ font-family:var(--f-nav); font-size:.78rem; font-weight:600; color:var(--text-soft); text-transform:uppercase; letter-spacing:.03em; }
+.form-field input, .form-field textarea{
+  border:1px solid var(--line); border-radius:var(--radius); padding:11px 13px;
+  font-family:var(--f-body); font-size:.94rem; background:var(--ivory); color:var(--text);
+}
+.form-field textarea{ min-height:120px; resize:vertical; }
+.form-field input:focus, .form-field textarea:focus{ outline:2px solid var(--bronze); outline-offset:1px; }
+
+.site-footer{ background:var(--black); color:#C7CBD8; padding:48px 0 22px; }
+.site-footer h4{ color:#FBF8F0; font-family:var(--f-nav); font-size:.78rem; letter-spacing:.04em; text-transform:uppercase; margin-bottom:14px; }
+.site-footer a{ color:#C7CBD8; } .site-footer a:hover{ color:var(--bronze-lt); }
+.footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:28px; margin-bottom:34px; }
+.footer-grid li{ margin-bottom:8px; font-size:.88rem; }
+.footer-bottom{ border-top:1px solid rgba(255,255,255,.12); padding-top:18px; font-size:.78rem; color:#8B92A3; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+
+.page-hero{ padding:40px 0 32px; border-bottom:1px solid var(--line); background:linear-gradient(180deg, var(--bronze-lt) 0%, var(--cream) 120%); }
+.divider-line{ height:1px; background:var(--line); border:none; margin:40px 0; }
+
+.reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.in-view{ opacity:1; transform:translateY(0); }
+
+@media (max-width: 900px){
+  .hero{ grid-template-columns:1fr; }
+  .grid-4{ grid-template-columns:repeat(2,1fr); }
+  .grid-3{ grid-template-columns:repeat(2,1fr); }
+  .grid-2{ grid-template-columns:1fr; }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+  .stats-bar{ grid-template-columns:repeat(2,1fr); }
+  .subdomain-grid{ grid-template-columns:1fr; }
+}
+@media (max-width: 700px){
+  .wrap{ padding:0 18px; }
+  .nav-links{
+  position:fixed;
+  top:96px;
+  left:0;
+  right:0;
+  width:100%;
+  height:calc(100vh - 96px);
+
+  background:var(--cream);
+
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+
+  padding:22px 20px 30px;
+  gap:4px;
+
+  transform:translateX(100%);
+  transition:transform .25s ease;
+
+  overflow-y:auto;
+  box-sizing:border-box;
+  z-index:9999;
+}
+
+.nav-links.open{
+  transform:translateX(0);
+}
+
+.nav-links a{
+  width:100%;
+  padding:14px 12px;
+  border-bottom:1px solid var(--line);
+  box-sizing:border-box;
+}
+
+  .nav-toggle{ display:block; }
+  .nav-cta .btn--ghost{ display:none; }
+  .mobile-register{
+  display:block !important;
+  width:100%;
+  padding:14px 12px !important;
+  border-bottom:1px solid var(--line);
+  box-sizing:border-box;
+}
+
+@media (min-width:701px){
+  .mobile-register{
+    display:none !important;
+  }
+}
+
+  .grid-4, .grid-3{ grid-template-columns:1fr; }
+  .footer-grid{ grid-template-columns:1fr; }
+  .tl-row{ grid-template-columns:1fr; gap:2px; }
+  .stats-bar{ grid-template-columns:1fr 1fr; }
+  p{ text-align:left; }
+}
+  body,
+  .hero,
+  .section--ivory,
+  .section--panel,
+  .page-hero,
+  .site-header {
+  background: var(--ivory);
+}
+.brand-logo {
+  width: 250px;
+  height: auto;
+  max-height: 90px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.footer-logo{
+  width:150px;
+  height:auto;
+  display:block;
+  margin-top:15px;
+}
+
+/* Centered About Cards */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.about-card {
+  width: min(100%, 980px);
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 38px 46px;
+  box-shadow: 0 10px 28px -20px rgba(20,23,28,.35);
+}
+
+.about-card h2 {
+  text-align: center;
+  font-family: var(--f-display);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.about-card p {
+  width: 100%;
+  max-width: none;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.about-institute-link {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.about-institute-link a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 22px;
+  background: var(--ink);
+  color: #FBF3EC;
+  border-radius: var(--radius);
+  font-family: var(--f-nav);
+  font-size: .9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+
+.about-institute-link a:hover {
+  background: #48181F;
+  transform: translateY(-2px);
+}
+
+.institution-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--cream);
+  box-shadow: 0 10px 28px -20px rgba(20,23,28,.35);
+}
+
+.institution-card {
+  padding: 38px;
+}
+
+.institution-card + .institution-card {
+  border-left: 1px solid var(--line);
+}
+
+.institution-card h2 {
+  font-family: var(--f-display);
+  font-size: 1.55rem;
+  margin-bottom: 24px;
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 30px;
+  font-size: .92rem;
+  color: var(--text-soft);
+}
+
+.highlight-grid div::first-letter {
+  color: var(--wine);
+}
+
+.vision-text {
+  font-style: italic;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+.institution-card hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 28px 0;
+}
+
+.mission-list {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.mission-list li {
+  margin-bottom: 16px;
+  padding-left: 5px;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+.about-institute-card {
+  margin-top: 60px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 40px;
+  box-shadow: 0 10px 28px -20px rgba(20,23,28,.35);
+}
+
+.about-institute-content {
+  max-width: 100%;
+}
+
+.about-institute-card h2 {
+  font-family: var(--f-display);
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.college-location {
+  color: var(--wine);
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.about-institute-card p {
+  text-align: justify;
+  line-height: 1.75;
+}
+
+.know-more-btn {
+  display: inline-flex;
+  margin-top: 20px;
+  padding: 12px 22px;
+  background: var(--wine);
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-family: var(--f-nav);
+  font-weight: 600;
+  transition: .2s ease;
+}
+
+.know-more-btn:hover {
+  transform: translateY(-2px);
+  background: #48181F;
+}
+
+@media (max-width: 800px) {
+  .institution-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .institution-card + .institution-card {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .highlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-institute-card {
+    padding: 28px 22px;
+  }
+}
+
+@media (max-width: 700px) {
+  .about-card {
+    padding: 28px 22px;
+  }
+}
+
+/* =========================================================
+   HYDERABAD / HOST CITY PAGE
+   ========================================================= */
+
+.city-card,
+.location-card,
+.attraction-card,
+.city-highlight-card {
+  box-sizing: border-box;
+}
+
+/* ---------- Hyderabad Introduction ---------- */
+
+.city-card {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 55px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+
+  gap: 30px;
+
+  padding: 35px;
+
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+
+  box-shadow: 0 10px 30px -20px rgba(20,23,28,.4);
+
+  overflow: hidden;
+}
+
+.city-card-content {
+  min-width: 0;
+}
+
+.city-card-content h2 {
+  font-family: var(--f-display);
+  font-size: 2rem;
+  line-height: 1.2;
+  margin: 8px 0 20px;
+}
+
+.city-card-content p {
+  width: 100%;
+  max-width: none;
+
+  text-align: justify;
+  line-height: 1.7;
+
+  margin-bottom: 16px;
+
+  overflow-wrap: break-word;
+}
+
+
+/* ---------- Right Highlight ---------- */
+
+.city-highlight-card {
+  align-self: center;
+
+  padding: 28px;
+
+  background: var(--navy);
+  color: white;
+
+  border-radius: 12px;
+
+  box-shadow: 0 12px 25px -18px rgba(0,0,0,.6);
+}
+
+.city-highlight-card h3 {
+  font-family: var(--f-display);
+  font-size: 1.35rem;
+  margin-bottom: 16px;
+}
+
+.city-highlight-card p {
+  color: rgba(255,255,255,.85);
+  line-height: 1.65;
+  text-align: left;
+}
+
+.city-highlight-card span {
+  display: inline-block;
+
+  margin-top: 18px;
+  padding: 7px 12px;
+
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 5px;
+
+  font-family: var(--f-nav);
+  font-size: .72rem;
+  letter-spacing: .05em;
+}
+
+
+/* ---------- Section Headings ---------- */
+
+.location-heading {
+  width: 100%;
+  max-width: 900px;
+
+  margin: 0 auto 25px;
+
+  text-align: center;
+}
+
+.location-heading h2 {
+  font-family: var(--f-display);
+  font-size: 1.7rem;
+
+  margin-bottom: 8px;
+}
+
+.location-heading p {
+  max-width: 700px;
+  margin: 0 auto;
+
+  text-align: center;
+
+  font-size: .9rem;
+  color: var(--text-soft);
+}
+
+
+/* =========================================================
+   WHY HYDERABAD CARDS
+   ========================================================= */
+
+.location-cards {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  border: 1px solid var(--line);
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  background: var(--cream);
+
+  box-shadow: 0 10px 30px -22px rgba(20,23,28,.4);
+}
+
+.location-card {
+  min-width: 0;
+
+  padding: 28px;
+
+  background: var(--cream);
+
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.location-card:nth-child(3n) {
+  border-right: none;
+}
+
+.location-card:nth-child(n+4) {
+  border-bottom: none;
+}
+
+.card-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 14px;
+
+  background: var(--ivory);
+
+  border: 1px solid var(--line);
+  border-radius: 8px;
+
+  font-size: 17px;
+}
+
+.location-card h3 {
+  font-family: var(--f-nav);
+  font-size: .95rem;
+
+  margin-bottom: 10px;
+}
+
+.location-card p {
+  font-size: .82rem;
+  line-height: 1.6;
+
+  color: var(--text-soft);
+
+  margin: 0;
+
+  text-align: left;
+
+  overflow-wrap: break-word;
+}
+
+
+/* =========================================================
+   ATTRACTIONS
+   ========================================================= */
+
+.attractions-heading {
+  margin-top: 55px;
+}
+
+.attraction-cards {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  border: 1px solid var(--line);
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  background: var(--cream);
+
+  box-shadow: 0 10px 30px -22px rgba(20,23,28,.4);
+}
+
+.attraction-card {
+  min-width: 0;
+
+  padding: 25px;
+
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+
+  position: relative;
+
+  background: var(--cream);
+}
+
+.attraction-card::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 4px;
+
+  background: var(--wine);
+}
+
+.attraction-card:nth-child(3n) {
+  border-right: none;
+}
+
+.attraction-card:nth-child(n+4) {
+  border-bottom: none;
+}
+
+.attraction-card h3 {
+  font-family: var(--f-nav);
+  font-size: .95rem;
+
+  margin-bottom: 9px;
+}
+
+.attraction-card p {
+  font-size: .82rem;
+  line-height: 1.6;
+
+  color: var(--text-soft);
+
+  margin: 0;
+
+  text-align: left;
+
+  overflow-wrap: break-word;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .city-card {
+    grid-template-columns: 1fr;
+    padding: 28px;
+  }
+
+  .city-highlight-card {
+    width: 100%;
+  }
+
+  .location-cards,
+  .attraction-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .location-card:nth-child(3n),
+  .attraction-card:nth-child(3n) {
+    border-right: 1px solid var(--line);
+  }
+
+  .location-card:nth-child(2n),
+  .attraction-card:nth-child(2n) {
+    border-right: none;
+  }
+
+  .location-card:nth-child(n+4),
+  .attraction-card:nth-child(n+4) {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .location-card:nth-last-child(-n+2),
+  .attraction-card:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 600px) {
+
+  .city-card {
+    padding: 22px;
+    margin-bottom: 40px;
+  }
+
+  .city-card-content h2 {
+    font-size: 1.55rem;
+  }
+
+  .location-cards,
+  .attraction-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .location-card,
+  .attraction-card {
+    border-right: none !important;
+    border-bottom: 1px solid var(--line) !important;
+  }
+
+  .location-card:last-child,
+  .attraction-card:last-child {
+    border-bottom: none !important;
+  }
+
+  .location-heading h2 {
+    font-size: 1.4rem;
+  }
+
+}
+
+.city-highlight-card h3 {
+  color: #ffffff;
+  font-family: var(--f-display);
+  font-size: 1.35rem;
+  margin-bottom: 16px;
+}
+
+/* =========================================
+   REGISTER BUTTON - DESKTOP / MOBILE
+   ========================================= */
+
+/* Desktop: hide the hamburger Register */
+@media (min-width: 701px) {
+  .mobile-register {
+    display: none !important;
+  }
+
+  .nav-cta .btn--ghost {
+    display: inline-flex !important;
+  }
+}
+
+/* Mobile: hide desktop Register */
+@media (max-width: 700px) {
+  .nav-cta .btn--ghost {
+    display: none !important;
+  }
+
+  .mobile-register {
+    display: block !important;
+  }
+}
+
+
+/* RIGHT-SIDE CONFERENCE LOGO */
+.conference-brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.conference-logo {
+  width: 200px;       /* increase this */
+  height: auto;
+  max-height: 95px;   /* controls image height */
+  object-fit: contain;
+  display: block;
+}
+
+/* =========================================================
+   SAME BLENDED BACKGROUND AS IMPORTANT DATES
+   DECCAN HERITAGE + ONLINE SUBMISSION
+   ========================================================= */
+
+.city-highlight-card,
+.submission-portal {
+  background:
+    radial-gradient(
+      circle at 88% 8%,
+      rgba(169, 121, 61, 0.4),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 6% 92%,
+      rgba(92, 36, 48, 0.45),
+      transparent 50%
+    ),
+    linear-gradient(
+      150deg,
+      var(--black) 0%,
+      var(--navy) 100%
+    ) !important;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.city-highlight-card > *,
+.submission-portal > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =====================================================
+   SIMPLE HYDERABAD CARD STYLE
+   ===================================================== */
+
+.location-cards,
+.attraction-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.location-card,
+.attraction-card {
+  background: var(--ivory);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 24px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.location-card:hover,
+.attraction-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(20, 23, 28, 0.08);
+}
+
+/* Icons */
+
+.location-card .card-icon,
+.attraction-card .attraction-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--bronze);
+}
+
+/* Headings */
+
+.location-card h3,
+.attraction-card h3 {
+  margin: 0 0 9px;
+  font-family: var(--f-display);
+  font-size: 20px;
+  line-height: 1.3;
+  color: var(--black);
+}
+
+/* Text */
+
+.location-card p,
+.attraction-card p {
+  margin: 0;
+  font-family: var(--f-body);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-soft);
+}
+
+
+/* Mobile */
+
+@media (max-width: 900px) {
+  .location-cards,
+  .attraction-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .location-cards,
+  .attraction-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+
+/* ---- Navigation Register button: solid ink background ---- */
+.nav-cta .btn--ghost{
+  background:var(--ink);
+  border-color:var(--ink);
+  color:#F5F1E6;
+}
+.nav-cta .btn--ghost:hover{
+  background:#000000;
+  border-color:#000000;
+  color:#FFFFFF;
+}
+.mobile-register{ color:var(--wine) !important; font-weight:700; }
+
+
+
+
+/* =============================================================
+   HEADER RESTRUCTURE — IC-FCSEE 2027
+   Top: conference name / date-mode line / full title.
+   Below: logo · menu (Register last) · logo.
+   Desktop = one row. <= 1100px = hamburger dropdown.
+   ============================================================= */
+header.site-header{
+  position:sticky; top:0; z-index:60;
+  background:var(--ivory);
+}
+header.site-header .header-title{
+  text-align:center; padding:12px 0 10px;
+  border-bottom:1px solid var(--line);
+}
+header.site-header .header-title-inner{
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+}
+header.site-header .ht-name{
+  margin:0; font-family:var(--f-display); font-weight:600;
+  font-size:clamp(1.5rem, 3vw, 2.2rem); line-height:1.1;
+  letter-spacing:.01em; color:var(--black);
+}
+header.site-header .ht-meta{
+  margin:0; justify-content:center; text-align:center;
+  white-space:normal; line-height:1.35;
+}
+header.site-header .ht-full{
+  margin:0; max-width:none; text-align:center;
+  font-family:var(--f-display); font-weight:500;
+  font-size:clamp(.88rem, 4.5vw, 1.75rem); line-height:1.3; color:var(--navy);
+}
+
+/* ---- menu row (desktop) ---- */
+header.site-header .nav{
+  position:relative;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:20px; padding-top:10px; padding-bottom:10px;
+  border-bottom:1px solid var(--line);
+}
+@media (max-width:1240px){ header.site-header .nav{ padding-left:28px; padding-right:28px; } }
+header.site-header .conference-brand{ margin:0; flex:0 0 auto; display:flex; align-items:center; }
+header.site-header .conference-logo{ width:220px; height:auto; max-height:75px; object-fit:contain; display:block; }
+header.site-header .brand{ margin:0; flex:0 0 auto; display:flex; align-items:center; }
+header.site-header .brand-logo{ width:250px; height:auto; max-height:65px; object-fit:contain; display:block; flex:0 0 auto; }
+
+header.site-header .nav-links{
+  position:static; transform:none; transition:none;
+  display:flex; flex-direction:row; align-items:center; justify-content:center;
+  flex:1 1 auto; gap:22px;
+  width:auto; height:auto; max-height:none; padding:0; margin:0;
+  background:none; box-shadow:none; overflow:visible;
+  visibility:visible; opacity:1; pointer-events:auto; z-index:auto;
+}
+header.site-header .nav-links a{
+  display:block; width:auto; white-space:nowrap;
+  padding:5px 0; border-bottom:2px solid transparent;
+  font-family:var(--f-nav); font-size:.88rem; font-weight:600; color:var(--text-soft);
+}
+header.site-header .nav-links a:hover,
+header.site-header .nav-links a.active{ color:var(--black); border-color:var(--bronze); }
+header.site-header .nav-links a.nav-register{
+  padding:11px 22px; margin-left:4px;
+  background:var(--ink); border:1px solid var(--ink); border-radius:var(--radius);
+  color:#F5F1E6; font-weight:600;
+  transition:background .18s ease, transform .18s ease;
+}
+header.site-header .nav-links a.nav-register:hover{ background:#000; border-color:#000; color:#fff; transform:translateY(-2px); }
+
+/* hamburger holder hidden on desktop */
+header.site-header .nav-cta{ display:none; }
+
+/* ---- hamburger + dropdown (tablet & mobile) ---- */
+@media (max-width:1100px){
+  header.site-header .nav{ gap:12px; }
+  header.site-header .conference-logo{ width:clamp(92px, 26vw, 170px); }
+  header.site-header .brand-logo{ width:clamp(104px, 32vw, 210px); }
+
+  header.site-header .nav-cta{ display:flex; align-items:center; justify-content:center; flex:0 0 auto; gap:0; }
+  header.site-header .nav-toggle{
+    display:block; position:relative; width:44px; height:44px; padding:0;
+    background:none; border:1px solid var(--line); border-radius:var(--radius);
+    cursor:pointer; -webkit-tap-highlight-color:transparent;
+  }
+  header.site-header .nav-toggle:focus-visible{ outline:2px solid var(--bronze); outline-offset:2px; }
+  header.site-header .nav-toggle span{
+    position:absolute; left:11px; right:11px; height:2px; border-radius:2px;
+    background:var(--black);
+    transition:transform .22s ease, opacity .18s ease, top .22s ease;
+  }
+  header.site-header .nav-toggle span:nth-child(1){ top:14px; bottom:auto; }
+  header.site-header .nav-toggle span:nth-child(2){ top:21px; bottom:auto; }
+  header.site-header .nav-toggle span:nth-child(3){ top:28px; bottom:auto; }
+  header.site-header .nav-toggle.open span:nth-child(1){ top:21px; transform:rotate(45deg); }
+  header.site-header .nav-toggle.open span:nth-child(2){ opacity:0; }
+  header.site-header .nav-toggle.open span:nth-child(3){ top:21px; transform:rotate(-45deg); }
+
+  header.site-header .nav-links{
+    position:absolute; top:100%; left:0; right:0;
+    flex-direction:column; align-items:stretch; justify-content:flex-start; gap:0;
+    padding:6px 18px 14px; box-sizing:border-box;
+    background:var(--cream); border-bottom:1px solid var(--line);
+    box-shadow:0 22px 30px -20px rgba(16,19,28,.4);
+    max-height:70vh; overflow-y:auto; -webkit-overflow-scrolling:touch;
+    visibility:hidden; opacity:0; pointer-events:none; transform:translateY(-8px);
+    transition:opacity .2s ease, transform .2s ease, visibility 0s linear .2s;
+    z-index:70;
+  }
+  header.site-header .nav-links.open{
+    visibility:visible; opacity:1; pointer-events:auto; transform:none;
+    transition:opacity .2s ease, transform .2s ease, visibility 0s;
+  }
+  header.site-header .nav-links a{
+    width:100%; box-sizing:border-box; padding:14px 12px; font-size:.95rem;
+    border-bottom:1px solid var(--line);
+  }
+  header.site-header .nav-links a:hover,
+  header.site-header .nav-links a.active{ border-color:var(--line); color:var(--black); background:var(--ivory); }
+  header.site-header .nav-links a.nav-register{
+    margin:12px 0 0; padding:14px 12px; text-align:center;
+    border:1px solid var(--ink); border-radius:var(--radius);
+  }
+  header.site-header .nav-links a.nav-register:hover{ transform:none; }
+}
+
+@media (max-width:600px){
+  header.site-header .header-title{ padding:10px 0 8px; }
+  header.site-header .header-title-inner{ gap:5px; }
+  header.site-header .ht-meta{ padding:5px 10px; margin-bottom:0; border-radius:14px; }
+  header.site-header .ht-full{ font-size:.82rem; }
+  header.site-header .nav{ padding-top:8px; padding-bottom:8px; padding-left:18px; padding-right:18px; }
+  header.site-header .ht-meta{ font-size:clamp(.5rem, 2.45vw, .7rem); letter-spacing:.01em; text-wrap:balance; }
+}
+
+/* ==UNIFY-START== */
+/* =============================================================
+   SITE-WIDE TITLE UNIFICATION + TIGHTER SPACING
+   One title system for every page:
+     H1  page title        H2  section title
+     H3  block / card title  H4  item title (names, small items)
+     .kicker  eyebrow pill   subtitle paragraph under a title
+   ============================================================= */
+:root{
+  --t-h1: clamp(1.9rem, 3.2vw, 2.5rem);
+  --t-h2: clamp(1.45rem, 2.1vw, 1.8rem);
+  --t-h3: 1.2rem;
+  --t-h4: 1rem;
+}
+
+/* ---------- TITLES (header & footer excluded) ---------- */
+body h1:not(.site-header *):not(.site-footer *),
+body h2:not(.site-header *):not(.site-footer *),
+body h3:not(.site-header *):not(.site-footer *),
+body h4:not(.site-header *):not(.site-footer *){
+  font-family:var(--f-display) !important;
+  font-weight:600 !important;
+  font-style:normal !important;
+  letter-spacing:0 !important;
+  text-transform:none !important;
+  line-height:1.2 !important;
+}
+body h1:not(.site-header *):not(.site-footer *){ font-size:var(--t-h1) !important; margin:0 0 8px !important; }
+body h2:not(.site-header *):not(.site-footer *){ font-size:var(--t-h2) !important; margin:0 0 8px !important; }
+body h3:not(.site-header *):not(.site-footer *){ font-size:var(--t-h3) !important; }
+body h4:not(.site-header *):not(.site-footer *){ font-size:var(--t-h4) !important; }
+/* person names / small item titles */
+body .person h3:not(.site-header *):not(.site-footer *), body .committee-member h3:not(.site-header *):not(.site-footer *){ font-size:var(--t-h4) !important; }
+body .committee-group h3.group-title:not(.site-header *):not(.site-footer *), body .review-note h4, body .help-card h3{ color:var(--black) !important; }
+/* the words inside a title keep the title colour (e.g. "Conference Registration") */
+body h1 span:not(.site-header *){ color:inherit !important; }
+/* small descriptor inside a title: "(Core Track Domain, Not Limited to)" */
+body h3 > span{ font-family:var(--f-body) !important; font-size:.78rem !important; font-weight:600 !important; line-height:1.3 !important; }
+
+/* ---------- EYEBROW PILLS ---------- */
+body .kicker, body .registration-kicker, body .review-kicker, body .ai-block-kicker{
+  font-size:.72rem !important; padding:5px 13px !important; margin:0 0 10px !important;
+  line-height:1.2 !important; letter-spacing:.04em !important; vertical-align:top;
+}
+/* small caps labels that sit above card titles */
+body .submission-mini-title, body .ai-notice-label, body .eyebrow{
+  font-family:var(--f-nav) !important; font-size:.68rem !important; font-weight:700 !important;
+  letter-spacing:.1em !important; text-transform:uppercase !important; line-height:1.3 !important;
+}
+
+/* ---------- SUBTITLES (paragraph right under a title) ---------- */
+body .page-hero p:not(.kicker), body .registration-hero p:not(.kicker),
+body .section-head p:not(.kicker), body .registration-head p:not(.kicker),
+body .submission-heading p:not(.kicker), body .review-heading > p:not(.kicker),
+body .ai-policy-heading p:not(.kicker), body .location-heading p{
+  font-family:var(--f-body) !important; font-size:1rem !important; line-height:1.6 !important;
+  color:var(--text-soft); max-width:64ch !important; margin-top:0 !important;
+}
+body .page-hero, body .registration-hero{ text-align:center !important; }
+body .page-hero p:not(.kicker), body .registration-hero p:not(.kicker){ margin-left:auto !important; margin-right:auto !important; margin-bottom:0 !important; text-align:center !important; }
+body .section-head, body .registration-head, body .submission-heading, body .review-heading,
+body .ai-policy-heading, body .location-heading{
+  max-width:700px !important; margin:0 auto 20px !important; text-align:center !important;
+}
+body .section-head p:not(.kicker), body .registration-head p:not(.kicker), body .submission-heading p:not(.kicker),
+body .review-heading > p:not(.kicker), body .ai-policy-heading p:not(.kicker), body .location-heading p{
+  margin-left:auto !important; margin-right:auto !important; margin-bottom:0 !important; text-align:center !important;
+}
+
+/* ---------- TIGHTER SPACING ---------- */
+body .section{ padding:30px 0 !important; }
+body .section--tight{ padding:22px 0 !important; }
+body .page-hero{ padding:22px 0 18px !important; }
+body .registration-hero{ padding:22px 0 18px !important; }
+body .divider-line{ margin:22px 0 !important; }
+body .hero{ padding-top:12px !important; padding-bottom:26px !important; gap:28px !important; }
+body .hero-meta{ margin:14px 0 18px !important; }
+body p{ margin-bottom:.7em; }
+body .grid{ gap:16px; }
+body .card{ padding:20px; }
+body .track-card{ gap:8px !important; }
+body .track-topics{ margin:0 !important; font-size:.9rem !important; font-weight:700 !important; line-height:1.55 !important; color:var(--black) !important; text-align:left !important; max-width:none !important; }
+body .stat-cell{ padding:18px 16px; }
+body .timeline-layout{ gap:24px !important; }
+body .timeline{ padding:22px; }
+body .timeline h2{ margin:0 0 12px !important; padding-bottom:12px !important; }
+body .tl-row{ padding:10px 0; }
+body .committee-group{ margin-bottom:22px !important; }
+body .site-footer{ padding:30px 0 16px !important; }
+body .footer-grid{ margin-bottom:20px !important; gap:24px !important; }
+
+/* about */
+body .about-card{ padding:26px 34px !important; }
+body .about-content{ gap:18px; }
+body .institution-card{ padding:26px !important; }
+body .about-institute-card{ margin-top:28px !important; padding:26px !important; }
+body .city-card{ margin:0 auto 24px !important; }
+body .attractions-heading{ margin-top:28px !important; }
+
+/* call for paper */
+body .call-paper-section{ padding:30px 0 34px !important; }
+body .call-paper-title{ margin-bottom:20px !important; }
+body .bottom-note{ margin-top:28px !important; }
+body .call-for-papers-card{ padding:26px 36px !important; }
+body .submission-section, body .review-section, body .ai-policy-section{ padding-top:30px !important; padding-bottom:30px !important; }
+body .submission-section + .section, body .review-section + .section, body .ai-policy-section + .section{ padding-top:30px !important; }
+
+/* registration */
+body .registration-section{ padding:30px 0 !important; }
+body .registration-options{ margin:26px auto !important; }
+body .registration-option-card{ padding:26px !important; }
+body .paper-submission-section{ padding:30px 0 !important; }
+body .cmt-button{ margin-bottom:24px !important; }
+
+/* footer column titles use the same title font */
+body .site-footer h4{
+  font-family:var(--f-display) !important; font-size:var(--t-h4) !important; font-weight:600 !important;
+  letter-spacing:0 !important; text-transform:none !important; line-height:1.2 !important; color:#FBF8F0 !important;
+  margin:0 0 10px !important;
+}
+/* card title in the home-page hero card */
+body .hero-card .big{
+  font-family:var(--f-display) !important; font-size:var(--t-h3) !important; font-weight:600 !important;
+  line-height:1.2 !important; color:#FBF8F0 !important; margin-bottom:2px !important;
+}
+/* a lone link/paragraph inside a card grid spans the full row */
+body .grid > p{ grid-column:1 / -1; }
+/* leftovers found while checking */
+body .registration-hero p + p{ margin-top:8px !important; }
+body .guidelines-section{ max-width:1200px; margin:0 auto; padding:0 28px; box-sizing:border-box; }
+body .committee-group > p{ max-width:none !important; }
+@media (max-width:700px){ body .guidelines-section{ padding:0 18px; } }
+/* ==UNIFY-END== */
+
+/* ===== About page: watermark behind "About the Conference" ===== */
+/* paste at the very END of the <style> block in about.html */
+body{ overflow-x:clip; }
+body .page-hero{
+  position:relative; isolation:isolate;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  min-height:clamp(288px, calc(28vw + 28px), 408px);
+  padding:32px 0 !important;
+}
+.page-hero::before{
+  content:""; position:absolute; z-index:-1; pointer-events:none;
+  top:0; bottom:0; left:50%; width:100vw; transform:translateX(-50%);
+  background:
+    linear-gradient(to bottom, rgba(247,248,251,.45), rgba(247,248,251,.60)),
+    url('images/svmv.png') center / cover no-repeat;
+}
+.page-hero h1{ text-shadow:0 1px 14px rgba(247,248,251,.95); }
+.page-hero p:not(.kicker){ color:#2b313c !important; font-weight:500; text-shadow:0 1px 10px rgba(247,248,251,.95); }
+
+/* =============================================================
+   FOOTER — 5-column layout (namespaced fc-* so no page styles clash)
+   ============================================================= */
+body .footer-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr 1.45fr 1.1fr .7fr;
+  gap:32px !important;
+  align-items:start;
+}
+.site-footer .footer-col{ min-width:0; }
+.site-footer .footer-col ul{ margin:0; padding:0; list-style:none; }
+.site-footer .footer-col li{ margin-bottom:8px; font-size:.88rem; line-height:1.45; }
+body .site-footer .footer-col h4{ min-height:2.4em; display:flex; align-items:flex-end; }
+.site-footer .footer-address{ color:#C7CBD8; font-size:.88rem; margin:0 0 14px; max-width:none; }
+.site-footer .footer-org-link{ display:inline-flex; flex-direction:column; align-items:flex-start; gap:8px; }
+.site-footer .footer-org-link span{ font-size:.85rem; color:#C7CBD8; }
+.site-footer .footer-org-link:hover span{ color:var(--bronze-lt); }
+.site-footer .footer-logo{ width:95px; height:auto; display:block; margin:0; }
+
+.site-footer .fc-list li{ display:flex; flex-direction:column; gap:1px; margin-bottom:11px; }
+.site-footer .fc-list.fc-phones li{ margin-bottom:8px; }
+.site-footer .fc-list a{ color:#C7CBD8; text-decoration:none; font-weight:400; }
+.site-footer .fc-list a:hover{ color:var(--bronze-lt); text-decoration:none; }
+.site-footer .fc-name{ color:#FBF8F0; font-weight:600; font-size:.88rem; }
+.site-footer .fc-phone{ font-family:var(--f-mono); font-size:.82rem; }
+.site-footer .fc-email{ overflow-wrap:anywhere; }
+
+@media (max-width:1100px){
+  body .footer-grid{ grid-template-columns:1fr 1fr 1fr; }
+}
+@media (max-width:900px){
+  body .footer-grid{ grid-template-columns:1fr 1fr; }
+  body .site-footer .footer-col h4{ min-height:0; }
+}
+@media (max-width:600px){
+  body .footer-grid{ grid-template-columns:1fr; gap:24px !important; }
+}
+</style>
+</head>
+<body>
+
+<body class="p-registration">
+<div class="marquee-strip"><div class="marquee-track"><span>CALL FOR PAPERS NOW OPEN &nbsp;·&nbsp; HYBRID MODE &nbsp;·&nbsp; ISBN PROCEEDINGS* &nbsp;·&nbsp; 19–20 MARCH 2027 &nbsp;·&nbsp; </span><span>CALL FOR PAPERS NOW OPEN &nbsp;·&nbsp; HYBRID MODE &nbsp;·&nbsp; ISBN PROCEEDINGS* &nbsp;·&nbsp; 19–20 MARCH 2027 &nbsp;·&nbsp; </span><span>CALL FOR PAPERS NOW OPEN &nbsp;·&nbsp; HYBRID MODE &nbsp;·&nbsp; ISBN PROCEEDINGS* &nbsp;·&nbsp; 19–20 MARCH 2027 &nbsp;·&nbsp; </span><span>CALL FOR PAPERS NOW OPEN &nbsp;·&nbsp; HYBRID MODE &nbsp;·&nbsp; ISBN PROCEEDINGS* &nbsp;·&nbsp; 19–20 MARCH 2027 &nbsp;·&nbsp; </span></div></div>
+
+<header class="site-header">
+
+  <!-- TOP: CONFERENCE TITLE -->
+  <!--<div class="header-title">
+    <div class="wrap header-title-inner">
+     
+      <div class="kicker ht-meta">International Conference · 19–20 March 2027 · Hybrid Mode</div>
+      <div class="ht-full">International Conference on Frontier Computing &amp; Sustainable Engineering Education</div>
+    </div>
+  </div>-->
+
+  <!-- BELOW: LOGO · MENU · LOGO -->
+  <div class="wrap nav">
+
+    <!-- LEFT LOGO -->
+    <a href="index.html" class="conference-brand">
+      <img src="images/logoright.png"
+           alt="IC-FCSEE 2027"
+           class="conference-logo">
+    </a>
+
+    <!-- MENU (Register is the last item) -->
+    <nav class="nav-links" id="site-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="committees.html">Committees</a>
+      <a href="callforpaper.html">Call for Paper</a>
+      <a href="speakers.html">Speakers</a>
+      <a href="contact.html">Contact</a>
+      <a href="registration.html" class="nav-register">Register</a>
+    </nav>
+
+    <!-- HAMBURGER (tablet / mobile only) -->
+    <div class="nav-cta">
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- RIGHT LOGO -->
+    <a href="index.html" class="brand">
+      <img src="images/image.png"
+           alt="IC-FCSEE 2027 logo"
+           class="brand-logo">
+    </a>
+
+  </div>
+</header>
+
+<section class="page-hero wrap">
+  <p class="kicker">About</p>
+  <h1>About the Conference</h1>
+  <p class="no-justify" style="max-width:60ch;">An overview of IC-FCSEE 2027, the host institution, and the conference's objectives.</p>
+</section>
+
+<section class="section">
+  <div class="wrap about-content">
+
+    <div class="about-card reveal">
+      <h2>IC-FCSEE 2027</h2>
+
+      <p>
+       IC-FCSEE 2027 is an interdisciplinary international conference organized by Sphoorthy Engineering College, Nadergul, Hyderabad, Telangana, India scheduled for 19–20 March 2027 in Hybrid Mode.      
+      </p>
+      <p>
+        With the theme <strong>“Converging Intelligence, Security and Sustainability for a Transformative Future”</strong>, IC-FCSEE 2027 brings together researchers, academicians, scientists, industry professionals, research scholars, educators, and students to exchange knowledge, present innovative research, and explore emerging technologies, and address contemporary global challenges.
+      </p>
+
+      <p>
+The conference brings together diverse and rapidly evolving research areas spanning Advanced Computing and Artificial Intelligence, Educational Transformations and EduTech Innovations, Cybersecurity and Autonomous Systems, and Deep-Tech, Quantum and Sustainable Technologies. By connecting these domains, IC-FCSEE 2027 encourages interdisciplinary research that bridges technological innovation, educational advancement, digital security, intelligent systems, and sustainable development.     </p>
+
+      <p>
+Recognizing that many of today's complex challenges cannot be addressed through a single discipline, the conference promotes interdisciplinary collaboration, knowledge exchange, academic–industry engagement, and innovation. It provides a platform for participants to present original research, discuss emerging trends, develop professional and research collaborations, and explore opportunities to translate innovative ideas into meaningful real-world applications.    </p>
+    </div>
+
+
+    <div class="about-card reveal">
+      <h2>About the Sphoorthy Engineering College (SPHN)</h2>
+
+      <p>
+        Established in 2004, Sphoorthy Engineering College has been excelling in research and entrepreneurship ever since its inception. In the last decade, it has given hundreds of engineers and leaders to the nation.
+      </p>
+
+      <p>
+        The college is well known for its innovative spirit, intensive research and hands-on approach to solving real-world problems, producing skilful engineers who are well received by industry and academia. The institution is approved by AICTE, New Delhi, and permanently affiliated to Jawaharlal Nehru Technological University (JNTU), Hyderabad, Telangana, India. It is accredited with an "A Grade" by NAAC, and provides state-of-the-art facilities and infrastructure for promoting technological advancement and innovation.
+      </p>
+
+      <p>
+        Sphoorthy Engineering College continues to strive to be a learning hub for students, equipping them with on-demand skills to be readily employable across diversified career pathways — encouraging collaborative learning between industry and academia to reinforce its curriculum with practical, real-world experience.
+      </p>
+      <div class="about-institute-link">
+    <a href="https://www.sphoorthyengg.ac.in/" target="_blank" rel="noopener noreferrer">
+    Know More About the Sphoorthy Engineering College →
+  </a>
+     </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--panel">
+  <div class="wrap">
+
+    <div class="institution-grid reveal">
+
+      <!-- Institute Highlights -->
+      <div class="institution-card">
+        <h2>Institute Highlights</h2>
+
+        <div class="highlight-grid">
+          <div>● Established in 2004</div>
+          <div>● Permanently Affiliated to JNTUH</div>
+
+          <div>● AICTE Approved</div>
+          <div>●NAAC Accredited with "A" Grade</div>
+
+          <div>● UGC Recognized under 2(f) & 12(B)</div>
+          <div>● Autonomous Institution</div>
+
+          <div>● Research & Entrepreneurship Focus</div>
+          <div>● Strong Industry–Academia Collaboration</div>
+
+          <div>● State-of-the-Art Infrastructure</div>
+          <div>● Advanced Technical Facilities</div>
+
+          <div>● Skill-Oriented Education</div>
+          <div>● Strong Placement Support</div>
+        </div>
+      </div>
+
+
+      <!-- Vision + Mission -->
+      <div class="institution-card">
+
+        <h2>Vision of the Institute</h2>
+
+        <p class="vision-text">
+          “To be a premier Institution of Excellence in Technical
+          Education driven by human values.”
+        </p>
+
+        <hr>
+
+        <h2>Mission of the Institute</h2>
+
+        <ul class="mission-list">
+          <li>
+            To impart cutting-edge technologies on par with industry standards.
+          </li>
+
+          <li>
+            To provide state-of-the-art infrastructure to create an ecosystem
+            for nurturing research, consultancy and entrepreneurship.
+          </li>
+
+          <li>
+            To inculcate professional behavior and ethical values to promote
+            social responsibility through the teaching-learning process and
+            collaboration.
+          </li>
+        </ul>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <p class="kicker">Scope</p>
+      <h2>Conference tracks</h2>
+      <p>Explore the key research areas and interdisciplinary tracks of IC-FCSEE 2027, covering emerging advances in artificial intelligence and computing, educational transformation, cybersecurity and autonomous systems, quantum technologies, and sustainable innovation.</p>
+    </div>
+    <div class="grid grid-2">
+      <div class="card track-card reveal">
+        <h3>Track 1 — Advanced Computing &amp; Artificial Intelligence <span style="font-size:.72rem; color:var(--wine); font-weight:700;"><br>CORE TRACK Domain, Not Limited to</span></h3>
+        <p class="track-topics">Generative AI<br>Foundation Models & Agentic AI<br>Edge AI<br>Federated Learning & Privacy-Preserving Computing<br>High-Performance & Intelligent Computing<br>Computer Vision<br>NLP & Multimodal Intelligence</p>
+        <p style="font-size:1rem; margin-bottom:0;"><strong>IC-FCSEE 2027</strong></p>
+      </div>
+      <div class="card track-card t2 reveal">
+        <h3>Track 2 — Educational Transformations &amp; EduTech Innovations <span style="font-size:.72rem; color:var(--wine); font-weight:700;"><br>CORE TRACK Domain, Not Limited to</span></h3>
+        <p class="track-topics">Generative AI & Agentic AI in Education<br>AI-Enabled Assessment & Outcome-Based Education<br>Immersive Learning<br>Virtual Labs & Spatial Computing<br>Learning Analytics<br>Digital Credentials & Inclusive EduTech</p>
+        <p style="font-size:1rem; margin-bottom:0;"><strong>IC-FCSEE 2027</strong></p>
+      </div>
+      <div class="card track-card t3 reveal">
+        <h3>Track 3 — Cybersecurity, Secure IoT &amp; Autonomous Systems <span style="font-size:.72rem; color:var(--wine); font-weight:700;"><br>INTERDISCIPLINARY Domain, Not Limited to</span></h3>
+        <p class="track-topics">AI-Driven Cybersecurity & Autonomous Cyber Defense<br>Post-Quantum Cryptography & Quantum-Safe Security<br>Secure IoT<br>Edge & Next-Generation Networks<br>Secure Robotics<br>Drones & Autonomous Systems</p>
+        <p style="font-size:1rem; margin-bottom:0;"><strong>IC-FCSEE 2027</strong></p>
+      </div>
+      <div class="card track-card t4 reveal">
+        <h3>Track 4 — Quantum Technologies, Applied Mathematics, Sustainable Engineering &amp; SDGs<span style="font-size:.72rem; color:var(--wine); font-weight:700;"><br>INTERDISCIPLINARY Domain, Not Limited to</span></h3>
+        <p class="track-topics">Quantum Computing<br>Quantum Sensing & Quantum Technologies<br>Applied Mathematics<br>Mathematical Modeling & Computational Methods<br>Advanced Materials & Semiconductor Technologies<br>Clean Energy & Sustainable Engineering<br>Sustainable Construction Materials</p>
+        <p style="font-size:1rem; margin-bottom:0;"><strong>IC-FCSEE 2027</strong></p>
+      </div>
+<p class="center-link"><a class="btn btn--ghost" href="callforpaper.html">See full sub-domains &amp; topics for every track →</a></p>  </div>
+  </div>
+</section>
+
+
+<section class="section section--panel">
+
+  <div class="wrap">
+
+    <!-- ================= HYDERABAD INTRO ================= -->
+    <div class="city-card reveal">
+
+      <div class="city-card-content">
+
+        <span class="eyebrow">HOST CITY</span>
+
+        <h2>Explore Hyderabad – The City of Pearls</h2>
+
+        <p>
+          Hyderabad, the capital of Telangana, is a vibrant city where
+          centuries of history, rich culture, traditional cuisine, and
+          modern technology come together. The city is renowned for
+          iconic landmarks such as Charminar, Golconda Fort, Chowmahalla
+          Palace, and Falaknuma Palace.
+        </p>
+
+        <p>
+          Hyderabad provides an excellent setting for international
+          conferences, academic events, research collaborations, and
+          professional gatherings. Its combination of heritage, modern
+          infrastructure, connectivity, hospitality, and cultural
+          experiences makes it an attractive destination for conference
+          participants.
+        </p>
+
+      </div>
+
+      <div class="city-highlight-card">
+
+        <h3>Deccan Heritage</h3>
+
+        <p>
+          Hyderabad brings together historic monuments, architectural
+          heritage, traditional culture, and modern technological
+          development, offering visitors a distinctive experience of
+          Telangana.
+        </p>
+
+        <span>HERITAGE & CULTURE</span>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================= WHY HYDERABAD ================= -->
+
+    <div class="location-heading">
+
+      <h2>Why Sphoorthy in Hyderabad is Ideal Conference Destination</h2>
+
+      <p>
+        An ideal destination combining connectivity, technology,
+        heritage, and hospitality.
+      </p>
+
+    </div>
+
+
+    <div class="location-cards">
+
+      <div class="location-card reveal">
+        <div class="card-icon">🚆</div>
+        <h3>Excellent Connectivity</h3>
+        <p>
+          Hyderabad has well-developed road, rail, and air connectivity,
+          making it accessible to participants travelling from across
+          India and abroad.
+        </p>
+      </div>
+
+
+      <div class="location-card reveal">
+        <div class="card-icon">✈️</div>
+        <h3>International Airport Access</h3>
+        <p>
+          Rajiv Gandhi International Airport provides air connectivity
+          to major Indian cities and international destinations.
+        </p>
+      </div>
+
+
+      <div class="location-card reveal">
+        <div class="card-icon">🏢</div>
+        <h3>Modern Conference Facilities</h3>
+        <p>
+          Hyderabad offers modern hotels, convention facilities,
+          educational institutions, and professional venues suitable
+          for conferences and academic events.
+        </p>
+      </div>
+
+
+      <div class="location-card reveal">
+        <div class="card-icon">🛡️</div>
+        <h3>Safe & Welcoming Environment</h3>
+        <p>
+          The city offers a diverse and welcoming environment with
+          established hospitality, accommodation, transportation,
+          and visitor services.
+        </p>
+      </div>
+
+
+      <div class="location-card reveal">
+        <div class="card-icon">🏛️</div>
+        <h3>Rich Heritage Experience</h3>
+        <p>
+          Participants can experience Hyderabad's historic landmarks,
+          including Charminar, Golconda Fort, Chowmahalla Palace,
+          and Qutb Shahi Tombs.
+        </p>
+      </div>
+
+
+      <div class="location-card reveal">
+        <div class="card-icon">₹</div>
+        <h3>Affordable Stay & Travel</h3>
+        <p>
+          Hyderabad provides accommodation, dining, and transportation
+          options across a wide range of budgets.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- ================= ATTRACTIONS ================= -->
+
+    <div class="location-heading attractions-heading">
+
+      <h2>Major Attractions in Hyderabad</h2>
+
+      <p>
+        Participants attending IC-FSCEE 2027 can experience the
+        cultural richness, historical heritage, and modern attractions
+        of Hyderabad.
+      </p>
+
+    </div>
+
+
+    <div class="attraction-cards">
+
+      <div class="attraction-card reveal">
+        <h3>Charminar</h3>
+        <p>
+          An iconic symbol of Hyderabad and a remarkable example of
+          Indo-Islamic architecture.
+        </p>
+      </div>
+
+
+      <div class="attraction-card reveal">
+        <h3>Golconda Fort</h3>
+        <p>
+          A magnificent historic fortress known for its architecture,
+          history, and remarkable acoustic features.
+        </p>
+      </div>
+
+
+      <div class="attraction-card reveal">
+        <h3>Hussain Sagar Lake</h3>
+        <p>
+          A major scenic attraction known for its lakefront surroundings,
+          Buddha statue, boating, and recreational destinations.
+        </p>
+      </div>
+
+
+      <div class="attraction-card reveal">
+        <h3>Chowmahalla Palace</h3>
+        <p>
+          A historic palace complex representing Hyderabad's royal
+          heritage and architectural traditions.
+        </p>
+      </div>
+
+
+      <div class="attraction-card reveal">
+        <h3>Falaknuma Palace</h3>
+        <p>
+          A magnificent historic palace known for its grand architecture, royal heritage, and timeless elegance.
+        </p>
+      </div>
+
+
+      <div class="attraction-card reveal">
+        <h3>Salar Jung Museum</h3>
+        <p>
+          One of Hyderabad's major cultural attractions featuring
+          an extensive collection of art, antiques, and historical objects.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+
+      <!-- 1. CONFERENCE + ORGANISER LOGO -->
+      <div class="footer-col">
+        <h4>IC-FCSEE 2027</h4>
+        <p class="no-justify footer-address">Sphoorthy Engineering College, Nadergul, Hyderabad, Telangana, India.</p>
+        <a href="https://www.sphoorthyengg.ac.in" target="_blank" rel="noopener noreferrer" class="footer-org-link" aria-label="Sphoorthy Engineering College official website">
+          <img src="images/logoicfs.png" alt="Sphoorthy Engineering College" class="footer-logo">
+          <span>Official Website &rarr;</span>
+        </a>
+      </div>
+
+      <!-- 2. NAVIGATION -->
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="committees.html">Committees</a></li>
+          <li><a href="callforpaper.html">Call for Paper</a></li>
+          <li><a href="speakers.html">Speakers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- 3. GENERAL CONTACT -->
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="fc-list">
+          <li><a href="mailto:icfcseeconference@sphoorthyengg.ac.in" class="fc-email">icfcseeconference@sphoorthyengg.ac.in</a></li>
+          <li><a href="mailto:icfcseepapers@sphoorthyengg.ac.in" class="fc-email">icfcseepapers@sphoorthyengg.ac.in</a></li>
+          <li><span class="fc-name">Dr. Kiran B. M., HoD-CSE</span><a href="tel:+919603899914" class="fc-phone">+91 96038 99914</a></li>
+          <li><span class="fc-name">Dr. Shubhashree Sahoo</span><a href="tel:+919032690649" class="fc-phone">+91 90326 90649</a></li>
+        </ul>
+      </div>
+
+      <!-- 4. PUBLICATION QUERIES -->
+      <div class="footer-col">
+        <h4>For Publication Queries, Contact</h4>
+        <ul class="fc-list fc-phones">
+          <li><a href="tel:+918374137193" class="fc-phone">+91 83741 37193</a></li>
+          <li><a href="tel:+919951377717" class="fc-phone">+91 99513 77717</a></li>
+          <li><a href="tel:+917680063063" class="fc-phone">+91 76800 63063</a></li>
+          <li><a href="tel:+919908076536" class="fc-phone">+91 99080 76536</a></li>
+        </ul>
+      </div>
+
+      <!-- 5. FOLLOW US -->
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <ul>
+          <li>
+            <a href="https://www.instagram.com/icfcsee_sphn?utm_source=qr&amp;psln=MWxzMTZweDN5b3U1Zg=="
+               target="_blank" rel="noopener noreferrer">Instagram</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Sphoorthy Engineering College. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // mobile nav toggle
+  var toggle = document.querySelector('.nav-toggle');
+  var links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', function () {
+      links.classList.toggle('open');
+      toggle.classList.toggle('open');
+    });
+    links.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { links.classList.remove('open'); });
+    });
+  }
+
+  // footer year
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // scroll-reveal
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && revealEls.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('in-view'); });
+  }
+
+  // animated counters
+  var counters = document.querySelectorAll('.stat-num[data-count]');
+  if (counters.length) {
+    var animateCounter = function (el) {
+      var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+      var suffix = el.getAttribute('data-suffix') || '';
+      var duration = 1200;
+      var start = null;
+      function step(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var value = Math.floor(progress * target);
+        el.textContent = String(value).padStart(2, '0') + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = String(target).padStart(2, '0') + suffix;
+      }
+      requestAnimationFrame(step);
+    };
+    if ('IntersectionObserver' in window) {
+      var cio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            cio.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      counters.forEach(function (el) { cio.observe(el); });
+    } else {
+      counters.forEach(animateCounter);
+    }
+  }
+
+  // rotating hero word
+  var rotEl = document.querySelector('.rotating-word');
+  if (rotEl) {
+    var words = (rotEl.getAttribute('data-words') || '').split('|').filter(Boolean);
+    if (words.length > 1) {
+      var idx = 0;
+      setInterval(function () {
+        idx = (idx + 1) % words.length;
+        rotEl.style.opacity = 0;
+        setTimeout(function () {
+          rotEl.textContent = words[idx];
+          rotEl.style.opacity = 1;
+        }, 260);
+      }, 2200);
+      rotEl.style.transition = 'opacity .26s ease';
+    }
+  }
+});
+
+</script>
+
+<script>
+/* Header: hamburger state (aria, close on outside-click / Esc / resize) + sticky offset */
+(function () {
+  var header = document.querySelector('.site-header');
+  var title  = document.querySelector('.header-title');
+  var nav    = document.getElementById('site-nav');
+  var toggle = document.querySelector('.nav-toggle');
+  if (!header || !nav || !toggle) return;
+
+  function setStickyOffset() {
+    /* the title block scrolls away; only the logo/menu row stays stuck to the top */
+    header.style.top = title ? (-title.offsetHeight) + 'px' : '0px';
+  }
+  function fitMenu() {
+    if (!nav.classList.contains('open')) return;
+    var top = nav.getBoundingClientRect().top;
+    nav.style.maxHeight = Math.max(160, window.innerHeight - top - 12) + 'px';
+  }
+  function sync() {
+    var open = nav.classList.contains('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (open) fitMenu();
+  }
+  function closeMenu() { nav.classList.remove('open'); }
+
+  new MutationObserver(sync).observe(nav, { attributes: true, attributeFilter: ['class'] });
+
+  document.addEventListener('click', function (e) {
+    if (nav.classList.contains('open') && !nav.contains(e.target) && !toggle.contains(e.target)) closeMenu();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('open')) { closeMenu(); toggle.focus(); }
+  });
+  window.addEventListener('resize', function () {
+    setStickyOffset();
+    if (window.innerWidth > 1100) closeMenu(); else fitMenu();
+  });
+  window.addEventListener('scroll', fitMenu, { passive: true });
+  window.addEventListener('load', setStickyOffset);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(setStickyOffset);
+
+  setStickyOffset();
+  sync();
+})();
+</script>
+
+</body>
+</html>
